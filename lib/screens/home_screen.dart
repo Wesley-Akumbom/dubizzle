@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-
-import '../routes.dart';
+import 'package:provider/provider.dart';
+import '../navigation/bottom_nav_bar.dart';
+import '../provider/navigation_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,11 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-
-  int _page = 0;
-
   @override
   Widget build(BuildContext context) {
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      Provider.of<NavigationProvider>(context, listen: false).setIndex(0); // Use appropriate index for each screen
+    });
+
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -140,55 +143,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite),
-            label: 'Favorites',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.add, color: Colors.redAccent, size: 55,),
-            label: 'Place Ad',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat),
-            label: 'Chats',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
-            label: 'Menu',
-          ),
-        ],
-        currentIndex: _page,
-        selectedItemColor: Colors.grey[900],
-        onTap: (index) {
-          setState(() {
-            _page = index;
-          });
-          switch (index) {
-            case 0:
-              Navigator.pushNamed(context, AppRoutes.home);
-              break;
-            case 1:
-              Navigator.pushNamed(context, AppRoutes.favorites);
-              break;
-            case 2:
-              Navigator.pushNamed(context, AppRoutes.placeAd);
-              break;
-            case 3:
-              Navigator.pushNamed(context, AppRoutes.chats);
-              break;
-            case 4:
-              Navigator.pushNamed(context, AppRoutes.menu);
-              break;
-          }
-        },
-      ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

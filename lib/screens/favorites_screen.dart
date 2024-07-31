@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../navigation/bottom_nav_bar.dart';
+import '../provider/navigation_provider.dart';
 
 class FavoritesScreen extends StatelessWidget {
   const FavoritesScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // Set the correct index when the screen is built
+    Provider.of<NavigationProvider>(context, listen: false).setIndex(1);
+
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Favorites'),
+        title: Text('Favorites'),
+        automaticallyImplyLeading: false,
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -16,21 +23,30 @@ class FavoritesScreen extends StatelessWidget {
             Expanded(
               child: _buildGrid('All Favorites', true),
             ),
-            const SizedBox(height: 16), // Space between grids
+            SizedBox(height: 16), // Space between grids
             Expanded(
               child: _buildGrid('Personalized Favorite Lists', false),
             ),
           ],
         ),
       ),
+      bottomNavigationBar: BottomNavBar(),
     );
   }
 
   Widget _buildGrid(String title, bool isDefault) {
     return Container(
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey[200]!),
+        color: Colors.white,
         borderRadius: BorderRadius.circular(8),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.3),
+            spreadRadius: 0,
+            blurRadius: 4,
+            offset: Offset(0, 2),
+          ),
+        ],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -41,20 +57,20 @@ class FavoritesScreen extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 if (isDefault) ...[
-                  const SizedBox(width: 8),
+                  SizedBox(width: 8),
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    child: const Text(
+                    child: Text(
                       'DEFAULT',
                       style: TextStyle(
                         color: Colors.white,
@@ -70,7 +86,7 @@ class FavoritesScreen extends StatelessWidget {
           Expanded(
             child: Center(
               child: isDefault
-                  ? const Column(
+                  ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.favorite_border, size: 50, color: Colors.grey),
@@ -82,19 +98,19 @@ class FavoritesScreen extends StatelessWidget {
                   : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Icon(Icons.favorite, size: 50, color: Colors.blue),
-                  const SizedBox(height: 16),
-                  const Text('Create your personalized list'),
-                  const Text('Organize your favorites'),
-                  const SizedBox(height: 16),
+                  Icon(Icons.favorite, size: 50, color: Colors.blue),
+                  SizedBox(height: 16),
+                  Text('Create your personalized list'),
+                  Text('Organize your favorites'),
+                  SizedBox(height: 16),
                   ElevatedButton(
                     onPressed: () {
                       // Handle "Make A List" button press
                     },
+                    child: Text('Make A List'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
+                      backgroundColor: Colors.blue
                     ),
-                    child: const Text('Make A List'),
                   ),
                 ],
               ),

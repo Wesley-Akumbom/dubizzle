@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../navigation/bottom_nav_bar.dart';
+
 class ChatsScreen extends StatelessWidget {
   const ChatsScreen({super.key});
 
@@ -11,8 +13,10 @@ class ChatsScreen extends StatelessWidget {
           title: Text('Chats'),
         ),
         body: Center(
-            child: Text('Chats Screen')
+            child: Text('Chats Screen',
         )
+    ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }

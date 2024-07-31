@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../navigation/bottom_nav_bar.dart';
+
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
 
@@ -12,7 +14,8 @@ class MenuScreen extends StatelessWidget {
         ),
         body: Center(
             child: Text('Menu Screen')
-        )
+        ),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 }
