@@ -13,7 +13,13 @@ class FavoritesScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: const Text(
+            'Favorites',
+          style: TextStyle(
+            fontWeight: FontWeight.bold
+          ),
+        ),
+        centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: Padding(
