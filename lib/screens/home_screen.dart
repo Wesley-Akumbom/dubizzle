@@ -1,7 +1,17 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+import '../routes.dart';
+
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+  int _page = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +66,67 @@ class HomeScreen extends StatelessWidget {
                   ],
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Container(
+                  padding: const EdgeInsets.all(16.0),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(8.0),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.3),
+                        spreadRadius: 1,
+                        blurRadius: 3,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          const Text(
+                            'Introducing New Projects',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(width: 8),
+                          Container(
+                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            decoration: BoxDecoration(
+                              color: Colors.green,
+                              borderRadius: BorderRadius.circular(12),
+                            ),
+                            child: const Text(
+                              'NEW',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          // Handle explore now button press
+                        },
+                        label: const Text('Explore Now', style: TextStyle(color: Colors.black),),
+                        icon: const Icon(Icons.arrow_forward),
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue[200],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
               ListView(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
@@ -93,10 +164,29 @@ class HomeScreen extends StatelessWidget {
             label: 'Menu',
           ),
         ],
-        currentIndex: 0,
+        currentIndex: _page,
         selectedItemColor: Colors.grey[900],
         onTap: (index) {
-          // Handle navigation based on index
+          setState(() {
+            _page = index;
+          });
+          switch (index) {
+            case 0:
+              Navigator.pushNamed(context, AppRoutes.home);
+              break;
+            case 1:
+              Navigator.pushNamed(context, AppRoutes.favorites);
+              break;
+            case 2:
+              Navigator.pushNamed(context, AppRoutes.placeAd);
+              break;
+            case 3:
+              Navigator.pushNamed(context, AppRoutes.chats);
+              break;
+            case 4:
+              Navigator.pushNamed(context, AppRoutes.menu);
+              break;
+          }
         },
       ),
     );
