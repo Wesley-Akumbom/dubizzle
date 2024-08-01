@@ -1,5 +1,3 @@
-// lib/widgets/animated_search_bar.dart
-
 import 'package:flutter/material.dart';
 import 'dart:async';
 
@@ -74,10 +72,9 @@ class _AnimatedSearchBarState extends State<AnimatedSearchBar> {
           Expanded(
             child: TextField(
               decoration: InputDecoration(
-                hintText: 'Search',
+                hintText: 'Search for ${_categories[_currentIndex]['name']}', // Combine hint text and suffix text
                 border: InputBorder.none,
-                suffixText: 'for ${_categories[_currentIndex]['name']}',
-                suffixStyle: TextStyle(color: Colors.grey.withOpacity(0.5)), // Set opacity to make it fainter
+                hintStyle: const TextStyle(color: Colors.grey),
               ),
               onSubmitted: widget.onSearch,
             ),
