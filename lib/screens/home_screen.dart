@@ -4,6 +4,7 @@ import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
 import '../widgets/category_card.dart';
 import '../widgets/featured_listing.dart';
+import '../widgets/animated_search_bar.dart'; // Add this import
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -31,20 +32,17 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(padding),
                 child: Row(
                   children: [
-                    const Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search',
-                          prefixIcon: Icon(Icons.search),
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.all(Radius.circular(30)),
-                          ),
-                        ),
+                    Expanded(
+                      child: AnimatedSearchBar( // Replace TextField with AnimatedSearchBar
+                        onSearch: (query) {
+                          // Handle search here
+                          print('Searching for: $query');
+                        },
                       ),
                     ),
                     SizedBox(width: padding),
                     IconButton(
-                      icon: Icon(Icons.notifications),
+                      icon: const Icon(Icons.notifications),
                       onPressed: () {
                         // Handle notification button press
                       },
@@ -85,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         color: Colors.grey.withOpacity(0.3),
                         spreadRadius: 1,
                         blurRadius: 3,
-                        offset: Offset(0, 2),
+                        offset: const Offset(0, 2),
                       ),
                     ],
                   ),
@@ -139,7 +137,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ListView(
                 shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 children: const [
                   FeaturedListing('Featured Item 1'),
                   FeaturedListing('Featured Item 2'),
