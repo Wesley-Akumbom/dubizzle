@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/navigation_provider.dart';
 import '../routes.dart';
+import '../screens/place_ad_screen.dart';
+import '../transitions/custom_route_transitions.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
@@ -37,7 +39,7 @@ class BottomNavBar extends StatelessWidget {
         ),
       ],
       currentIndex: navigationProvider.currentIndex,
-      selectedItemColor: Colors.grey[900],
+      selectedItemColor: Colors.blue,
       onTap: (index) => _onItemTapped(index, context),
     );
   }
@@ -54,7 +56,7 @@ class BottomNavBar extends StatelessWidget {
         Navigator.pushReplacementNamed(context, AppRoutes.favorites);
         break;
       case 2:
-        Navigator.pushReplacementNamed(context, AppRoutes.placeAd);
+        Navigator.push(context, SlideUpRoute(page: const PlaceAdScreen()));
         break;
       case 3:
         Navigator.pushReplacementNamed(context, AppRoutes.chats);
@@ -64,6 +66,7 @@ class BottomNavBar extends StatelessWidget {
         break;
     }
   }
+
 
   Widget _buildPlaceAdButton(double iconSize) {
     return Container(
