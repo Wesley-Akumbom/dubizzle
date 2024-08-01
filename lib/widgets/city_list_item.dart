@@ -20,7 +20,6 @@ class CityListItem extends StatelessWidget {
             fontSize: fontSize,
           ),
         ),
-        trailing: Icon(Icons.arrow_forward, size: fontSize),
         onTap: () {
           // Handle city selection
         },

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-
 import '../navigation/bottom_nav_bar.dart';
 
 class ChatsScreen extends StatelessWidget {
-  const ChatsScreen({super.key});
+  const ChatsScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final shorterSide = MediaQuery.of(context).size.shortestSide;
+    final size = MediaQuery.of(context).size;
+    final shorterSide = size.shortestSide;
     final padding = shorterSide * 0.05;
-    final imageSize = shorterSide * 0.4;
+    final imageSize = shorterSide;
     final fontSize = shorterSide * 0.04;
 
     return Scaffold(
@@ -23,14 +23,14 @@ class ChatsScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.all(padding),
+          padding: EdgeInsets.fromLTRB(padding, size.height * 0.001, padding, padding),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/images/empty_chat.png', // Ensure this image exists in your assets
+                'assets/images/empty_chat.jpg',
                 width: imageSize,
                 height: imageSize,
               ),
