@@ -4,29 +4,32 @@ class MenuListItem extends StatelessWidget {
   final IconData icon;
   final String title;
   final VoidCallback onTap;
-  final Color? iconColor; // New parameter for icon color
+  final Color? iconColor;
+  final bool showTrailing; // New parameter to control the trailing icon
 
   const MenuListItem({
-    super.key,
+    Key? key,
     required this.icon,
     required this.title,
     required this.onTap,
-    this.iconColor, // Default is null
-  });
+    this.iconColor,
+    this.showTrailing = true, // Default to true
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     final shorterSide = MediaQuery.of(context).size.shortestSide;
-    final fontSize = shorterSide * 0.04;
     final iconSize = shorterSide * 0.06;
 
     return ListTile(
-      leading: Icon(icon, size: iconSize, color: iconColor ?? Colors.grey[600]), // Use iconColor if provided
+      leading: Icon(icon, size: iconSize, color: iconColor ?? Colors.grey[600]),
       title: Text(
         title,
-        style: TextStyle(fontSize: fontSize),
+        style: Theme.of(context).textTheme.bodyMedium,
       ),
-      trailing: Icon(Icons.arrow_forward_ios, size: iconSize * 0.8, color: Colors.grey[400]),
+      trailing: showTrailing
+          ? Icon(Icons.arrow_forward_ios, size: iconSize * 0.8, color: Colors.grey[400])
+          : null, // Show trailing icon based on the parameter
       onTap: onTap,
     );
   }
