@@ -1,3 +1,5 @@
+// lib/screens/menu_screen.dart
+
 import 'package:flutter/material.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../widgets/menu_action_card.dart';
@@ -118,7 +120,6 @@ class MenuScreen extends StatelessWidget {
             // Handle Car Appointments tap
           },
         ),
-        const Divider(height: 2),
         MenuListItem(
           icon: Icons.location_city,
           title: 'City',
@@ -133,7 +134,6 @@ class MenuScreen extends StatelessWidget {
             // Handle Language tap
           },
         ),
-        const Divider(height: 2),
         MenuListItem(
           icon: Icons.article,
           title: 'Blogs',
@@ -176,6 +176,7 @@ class MenuScreen extends StatelessWidget {
             // Handle Log Out tap
           },
           iconColor: Colors.red, // Set the icon color to red
+          showTrailing: false, // Set this to false to hide the trailing arrow
         ),
       ],
     );

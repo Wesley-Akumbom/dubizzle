@@ -8,20 +8,20 @@ class ChatsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final shorterSide = size.shortestSide;
-    final padding = shorterSide * 0.05;
+    final padding = shorterSide * 0.006;
     final imageSize = shorterSide;
     final fontSize = shorterSide * 0.04;
 
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Chats',
+          'Messages',
           style: TextStyle(
-            fontSize: shorterSide * 0.06,
+            fontSize: shorterSide * 0.04,
             fontWeight: FontWeight.bold,
           ),
         ),
-        centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: SingleChildScrollView(
         child: Padding(

@@ -18,6 +18,14 @@ class DubizzleApp extends StatelessWidget {
         title: 'Dubizzle',
         theme: ThemeData(
           primarySwatch: Colors.blue,
+          scaffoldBackgroundColor: Colors.white,
+          cardColor: Colors.white,
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+            backgroundColor: Colors.white
+          ),
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.white
+          ),
         ),
         initialRoute: AppRoutes.home,
         onGenerateRoute: AppRouter.generateRoute

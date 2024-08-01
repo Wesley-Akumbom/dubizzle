@@ -31,7 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 padding: EdgeInsets.all(padding),
                 child: Row(
                   children: [
-                    Expanded(
+                    const Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search',
