@@ -11,36 +11,44 @@ class FavoritesScreen extends StatelessWidget {
     // Set the correct index when the screen is built
     Provider.of<NavigationProvider>(context, listen: false).setIndex(1);
 
+    // Get screen dimensions
+    final screenWidth = MediaQuery.of(context).size.width;
+    final padding = screenWidth * 0.04;
+
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-            'Favorites',
+          'Favorites',
           style: TextStyle(
-            fontWeight: FontWeight.bold
+            fontWeight: FontWeight.bold,
           ),
         ),
         centerTitle: true,
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: EdgeInsets.all(padding),
         child: Column(
           children: [
             Expanded(
-              child: _buildGrid('All Favorites', true),
+              child: _buildGrid('All Favorites', true, screenWidth),
             ),
-            SizedBox(height: 16), // Space between grids
+            SizedBox(height: padding), // Space between grids
             Expanded(
-              child: _buildGrid('Personalized Favorite Lists', false),
+              child: _buildGrid('Personalized Favorite Lists', false, screenWidth),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavBar(),
+      bottomNavigationBar: const BottomNavBar(),
     );
   }
 
-  Widget _buildGrid(String title, bool isDefault) {
+  Widget _buildGrid(String title, bool isDefault, double screenWidth) {
+    final titleFontSize = screenWidth * 0.05;
+    final iconSize = screenWidth * 0.1;
+    final padding = screenWidth * 0.02;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -50,7 +58,7 @@ class FavoritesScreen extends StatelessWidget {
             color: Colors.grey.withOpacity(0.3),
             spreadRadius: 0,
             blurRadius: 4,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
       ),
@@ -58,20 +66,20 @@ class FavoritesScreen extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: EdgeInsets.all(padding),
             child: Row(
               children: [
                 Text(
                   title,
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: titleFontSize,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 if (isDefault) ...[
-                  SizedBox(width: 8),
+                  SizedBox(width: padding),
                   Container(
-                    padding: EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                    padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding / 2),
                     decoration: BoxDecoration(
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(12),
@@ -80,7 +88,7 @@ class FavoritesScreen extends StatelessWidget {
                       'DEFAULT',
                       style: TextStyle(
                         color: Colors.white,
-                        fontSize: 12,
+                        fontSize: titleFontSize * 0.6,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -95,28 +103,29 @@ class FavoritesScreen extends StatelessWidget {
                   ? Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.favorite_border, size: 50, color: Colors.grey),
-                  SizedBox(height: 16),
-                  Text('You have no favorites saved on this list'),
-                  Text('Use the favorite icon to save ads that you want to check later.'),
+                  Icon(Icons.favorite_border, size: iconSize, color: Colors.grey),
+                  SizedBox(height: padding),
+                  Text('You have no favorites saved on this list', style: TextStyle(fontSize: titleFontSize * 0.8)),
+                  Text('Use the favorite icon to save ads that you want to check later.', style: TextStyle(fontSize: titleFontSize * 0.6)),
                 ],
               )
                   : Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.favorite, size: 50, color: Colors.blue),
-                  SizedBox(height: 16),
-                  Text('Create your personalized list'),
-                  Text('Organize your favorites'),
-                  SizedBox(height: 16),
+                  Icon(Icons.favorite, size: iconSize, color: Colors.blue),
+                  SizedBox(height: padding),
+                  Text('Create your personalized list', style: TextStyle(fontSize: titleFontSize * 0.8)),
+                  Text('Organize your favorites', style: TextStyle(fontSize: titleFontSize * 0.6)),
+                  SizedBox(height: padding),
                   ElevatedButton(
                     onPressed: () {
                       // Handle "Make A List" button press
                     },
-                    child: Text('Make A List'),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue
+                      backgroundColor: Colors.blue,
+                      textStyle: TextStyle(fontSize: titleFontSize * 0.6),
                     ),
+                    child: const Text('Make A List'),
                   ),
                 ],
               ),

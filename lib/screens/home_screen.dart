@@ -13,10 +13,13 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-
     WidgetsBinding.instance.addPostFrameCallback((_) {
       Provider.of<NavigationProvider>(context, listen: false).setIndex(0); // Use appropriate index for each screen
     });
+
+    // Get screen dimensions
+    final screenWidth = MediaQuery.of(context).size.width;
+    final padding = screenWidth * 0.04;
 
     return Scaffold(
       body: SafeArea(
@@ -24,10 +27,10 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: EdgeInsets.all(padding),
                 child: Row(
                   children: [
-                   const Expanded(
+                    const Expanded(
                       child: TextField(
                         decoration: InputDecoration(
                           hintText: 'Search',
@@ -38,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(width: 8),
+                    SizedBox(width: padding),
                     IconButton(
                       icon: const Icon(Icons.notifications),
                       onPressed: () {
@@ -49,13 +52,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.fromLTRB(padding, padding / 2, padding, padding / 4),
                 child: GridView.count(
                   crossAxisCount: 3,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
-                  mainAxisSpacing: 16,
-                  crossAxisSpacing: 16,
+                  mainAxisSpacing: padding / 4,
+                  crossAxisSpacing: padding / 4,
                   children: const [
                     CategoryCard('Property For Rent', Icons.home),
                     CategoryCard('Property For Sale', Icons.sell),
@@ -70,9 +73,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: EdgeInsets.all(padding),
                 child: Container(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: EdgeInsets.all(padding),
                   decoration: BoxDecoration(
                     color: Colors.white,
                     borderRadius: BorderRadius.circular(8.0),
@@ -90,37 +93,37 @@ class _HomeScreenState extends State<HomeScreen> {
                     children: [
                       Row(
                         children: [
-                          const Text(
+                          Text(
                             'Introducing New Projects',
                             style: TextStyle(
-                              fontSize: 16,
+                              fontSize: screenWidth * 0.04,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          const SizedBox(width: 8),
+                          SizedBox(width: padding),
                           Container(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                            padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding / 2),
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(12),
                             ),
-                            child: const Text(
+                            child: Text(
                               'NEW',
                               style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 12,
+                                fontSize: screenWidth * 0.03,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: padding),
                       ElevatedButton.icon(
                         onPressed: () {
                           // Handle explore now button press
                         },
-                        label: const Text('Explore Now', style: TextStyle(color: Colors.black),),
+                        label: const Text('Explore Now', style: TextStyle(color: Colors.black)),
                         icon: const Icon(Icons.arrow_forward),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue[200],
@@ -156,6 +159,10 @@ class CategoryCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final iconSize = screenWidth * 0.1;
+    final fontSize = screenWidth * 0.03;
+
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
@@ -172,22 +179,22 @@ class CategoryCard extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 30, color: Colors.redAccent),
-          const SizedBox(height: 8),
+          Icon(icon, size: iconSize, color: Colors.redAccent),
+          SizedBox(height: screenWidth * 0.02),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
             child: Text(
               categoryName,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 12,
+                fontSize: fontSize,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey[800],
-            ),
+              ),
               maxLines: 2,
               overflow: TextOverflow.ellipsis,
             ),
-          )
+          ),
         ],
       ),
     );
@@ -201,11 +208,14 @@ class FeaturedListing extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final fontSize = screenWidth * 0.04;
+
     return Card(
-      margin: const EdgeInsets.all(8.0),
+      margin: EdgeInsets.all(screenWidth * 0.02),
       child: ListTile(
-        title: Text(title),
-        subtitle: const Text('Description of the featured item'),
+        title: Text(title, style: TextStyle(fontSize: fontSize)),
+        subtitle: Text('Description of the featured item', style: TextStyle(fontSize: fontSize * 0.8)),
       ),
     );
   }
