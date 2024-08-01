@@ -8,14 +8,16 @@ class FeaturedListing extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shorterSide = MediaQuery.of(context).size.shortestSide;
-    final fontSize = shorterSide * 0.04;
+    final fontSize = shorterSide * 0.03; // Reduced from 0.04 to 0.03
 
     return Card(
-      margin: EdgeInsets.all(shorterSide * 0.02),
+      margin: EdgeInsets.all(shorterSide * 0.015), // Reduced from 0.02
       child: ListTile(
         title: Text(title, style: TextStyle(fontSize: fontSize)),
-        subtitle: Text('Description of the featured item',
-            style: TextStyle(fontSize: fontSize * 0.8)),
+        subtitle: Text(
+          'Description of the featured item',
+          style: TextStyle(fontSize: fontSize * 0.8),
+        ),
       ),
     );
   }

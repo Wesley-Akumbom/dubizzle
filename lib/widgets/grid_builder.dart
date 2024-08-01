@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 Widget buildGrid(String title, bool isDefault, BuildContext context) {
   final shorterSide = MediaQuery.of(context).size.shortestSide;
-  final titleFontSize = shorterSide * 0.05;
-  final iconSize = shorterSide * 0.1;
-  final padding = shorterSide * 0.02;
+  final titleFontSize = shorterSide * 0.0375; // Reduced from 0.05 to 0.0375
+  final iconSize = shorterSide * 0.075; // Reduced from 0.1 to 0.075
+  final padding = shorterSide * 0.015; // Reduced from 0.02 to 0.015
 
   return Container(
     decoration: BoxDecoration(

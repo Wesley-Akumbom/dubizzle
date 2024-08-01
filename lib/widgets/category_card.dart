@@ -9,8 +9,8 @@ class CategoryCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final shorterSide = MediaQuery.of(context).size.shortestSide;
-    final iconSize = shorterSide * 0.1;
-    final fontSize = shorterSide * 0.03;
+    final iconSize = shorterSide * 0.075;
+    final fontSize = shorterSide * 0.0225;
 
     return Container(
       decoration: BoxDecoration(
@@ -29,9 +29,9 @@ class CategoryCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, size: iconSize, color: Colors.redAccent),
-          SizedBox(height: shorterSide * 0.02),
+          SizedBox(height: shorterSide * 0.015),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: shorterSide * 0.02),
+            padding: EdgeInsets.symmetric(horizontal: shorterSide * 0.015),
             child: Text(
               categoryName,
               textAlign: TextAlign.center,

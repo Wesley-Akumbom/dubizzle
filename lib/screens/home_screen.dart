@@ -53,12 +53,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.fromLTRB(
-                    padding, padding / 2, padding, padding / 4),
+                padding: const EdgeInsets.fromLTRB(10,1,10,1),
                 child: GridView.count(
                   crossAxisCount: 3,
                   shrinkWrap: true,
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   mainAxisSpacing: padding / 4,
                   crossAxisSpacing: padding / 4,
                   children: const [
@@ -105,7 +104,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           SizedBox(width: padding),
                           Container(
                             padding: EdgeInsets.symmetric(
-                                horizontal: padding, vertical: padding / 2),
+                                horizontal: padding,
+                                vertical: padding / 2),
                             decoration: BoxDecoration(
                               color: Colors.green,
                               borderRadius: BorderRadius.circular(12),
@@ -126,9 +126,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         onPressed: () {
                           // Handle explore now button press
                         },
-                        label: Text('Explore Now',
+                        label: const Text('Explore Now',
                             style: TextStyle(color: Colors.black)),
-                        icon: Icon(Icons.arrow_forward),
+                        icon: const Icon(Icons.arrow_forward),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue[200],
                         ),
@@ -139,7 +139,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               ListView(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
+                physics: NeverScrollableScrollPhysics(),
                 children: const [
                   FeaturedListing('Featured Item 1'),
                   FeaturedListing('Featured Item 2'),
