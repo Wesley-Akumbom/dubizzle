@@ -9,12 +9,10 @@ class FavoritesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Set the correct index when the screen is built
     Provider.of<NavigationProvider>(context, listen: false).setIndex(1);
 
-    // Get screen dimensions
-    final screenWidth = MediaQuery.of(context).size.width;
-    final padding = screenWidth * 0.04;
+    final shorterSide = MediaQuery.of(context).size.shortestSide;
+    final padding = shorterSide * 0.04;
 
     return Scaffold(
       appBar: AppBar(
@@ -32,11 +30,11 @@ class FavoritesScreen extends StatelessWidget {
         child: Column(
           children: [
             Expanded(
-              child: buildGrid('All Favorites', true, screenWidth),
+              child: buildGrid('All Favorites', true, context),
             ),
-            SizedBox(height: padding), // Space between grids
+            SizedBox(height: padding),
             Expanded(
-              child: buildGrid('Personalized Favorite Lists', false, screenWidth),
+              child: buildGrid('Personalized Favorite Lists', false, context),
             ),
           ],
         ),

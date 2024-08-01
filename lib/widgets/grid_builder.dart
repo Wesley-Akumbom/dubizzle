@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-Widget buildGrid(String title, bool isDefault, double screenWidth) {
-  final titleFontSize = screenWidth * 0.05;
-  final iconSize = screenWidth * 0.1;
-  final padding = screenWidth * 0.02;
+Widget buildGrid(String title, bool isDefault, BuildContext context) {
+  final shorterSide = MediaQuery.of(context).size.shortestSide;
+  final titleFontSize = shorterSide * 0.05;
+  final iconSize = shorterSide * 0.1;
+  final padding = shorterSide * 0.02;
 
   return Container(
     decoration: BoxDecoration(
@@ -35,7 +36,8 @@ Widget buildGrid(String title, bool isDefault, double screenWidth) {
               if (isDefault) ...[
                 SizedBox(width: padding),
                 Container(
-                  padding: EdgeInsets.symmetric(horizontal: padding, vertical: padding / 2),
+                  padding: EdgeInsets.symmetric(
+                      horizontal: padding, vertical: padding / 2),
                   decoration: BoxDecoration(
                     color: Colors.blue,
                     borderRadius: BorderRadius.circular(12),
@@ -59,19 +61,26 @@ Widget buildGrid(String title, bool isDefault, double screenWidth) {
                 ? Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.favorite_border, size: iconSize, color: Colors.grey),
+                Icon(Icons.favorite_border,
+                    size: iconSize, color: Colors.grey),
                 SizedBox(height: padding),
-                Text('You have no favorites saved on this list', style: TextStyle(fontSize: titleFontSize * 0.8)),
-                Text('Use the favorite icon to save ads that you want to check later.', style: TextStyle(fontSize: titleFontSize * 0.6)),
+                Text('You have no favorites saved on this list',
+                    style: TextStyle(fontSize: titleFontSize * 0.8)),
+                Text(
+                    'Use the favorite icon to save ads that you want to check later.',
+                    style: TextStyle(fontSize: titleFontSize * 0.6)),
               ],
             )
                 : Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(Icons.favorite, size: iconSize, color: Colors.blue),
+                Icon(Icons.favorite,
+                    size: iconSize, color: Colors.blue),
                 SizedBox(height: padding),
-                Text('Create your personalized list', style: TextStyle(fontSize: titleFontSize * 0.8)),
-                Text('Organize your favorites', style: TextStyle(fontSize: titleFontSize * 0.6)),
+                Text('Create your personalized list',
+                    style: TextStyle(fontSize: titleFontSize * 0.8)),
+                Text('Organize your favorites',
+                    style: TextStyle(fontSize: titleFontSize * 0.6)),
                 SizedBox(height: padding),
                 ElevatedButton(
                   onPressed: () {
@@ -79,7 +88,8 @@ Widget buildGrid(String title, bool isDefault, double screenWidth) {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue,
-                    textStyle: TextStyle(fontSize: titleFontSize * 0.6),
+                    textStyle:
+                    TextStyle(fontSize: titleFontSize * 0.6),
                   ),
                   child: const Text('Make A List'),
                 ),

@@ -4,13 +4,13 @@ class CategoryCard extends StatelessWidget {
   final String categoryName;
   final IconData icon;
 
-  const CategoryCard({super.key, required this.icon, required this.categoryName});
+  const CategoryCard(this.categoryName, this.icon, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    final screenWidth = MediaQuery.of(context).size.width;
-    final iconSize = screenWidth * 0.1;
-    final fontSize = screenWidth * 0.03;
+    final shorterSide = MediaQuery.of(context).size.shortestSide;
+    final iconSize = shorterSide * 0.1;
+    final fontSize = shorterSide * 0.03;
 
     return Container(
       decoration: BoxDecoration(
@@ -29,9 +29,9 @@ class CategoryCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Icon(icon, size: iconSize, color: Colors.redAccent),
-          SizedBox(height: screenWidth * 0.02),
+          SizedBox(height: shorterSide * 0.02),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.02),
+            padding: EdgeInsets.symmetric(horizontal: shorterSide * 0.02),
             child: Text(
               categoryName,
               textAlign: TextAlign.center,
