@@ -1,3 +1,4 @@
+import 'package:dubizzle/screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/navigation_provider.dart';
@@ -62,7 +63,7 @@ class BottomNavBar extends StatelessWidget {
         Navigator.pushReplacementNamed(context, AppRoutes.chats);
         break;
       case 4:
-        Navigator.pushReplacementNamed(context, AppRoutes.menu);
+        Navigator.push(context, SlideLeftRoute(page: const MenuScreen()));
         break;
     }
   }
