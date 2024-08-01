@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../widgets/menu_action_card.dart';
 import '../widgets/user_profile_card.dart';
+import '../widgets/menu_list_item.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
@@ -40,7 +41,8 @@ class MenuScreen extends StatelessWidget {
               ),
               SizedBox(height: padding),
               _buildActionCards(context),
-              // Add more menu items here
+              SizedBox(height: padding),
+              _buildMenuItems(context),
             ],
           ),
         ),
@@ -73,6 +75,107 @@ class MenuScreen extends StatelessWidget {
               // Handle My Searches tap
             },
           ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildMenuItems(BuildContext context) {
+    return Column(
+      children: [
+        MenuListItem(
+          icon: Icons.person,
+          title: 'Profile',
+          onTap: () {
+            // Handle Profile tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.settings,
+          title: 'Account Settings',
+          onTap: () {
+            // Handle Account Settings tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.notifications,
+          title: 'Notification Settings',
+          onTap: () {
+            // Handle Notification Settings tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.security,
+          title: 'Security',
+          onTap: () {
+            // Handle Security tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.directions_car,
+          title: 'Car Appointments',
+          onTap: () {
+            // Handle Car Appointments tap
+          },
+        ),
+        const Divider(height: 2),
+        MenuListItem(
+          icon: Icons.location_city,
+          title: 'City',
+          onTap: () {
+            // Handle City tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.language,
+          title: 'Language',
+          onTap: () {
+            // Handle Language tap
+          },
+        ),
+        const Divider(height: 2),
+        MenuListItem(
+          icon: Icons.article,
+          title: 'Blogs',
+          onTap: () {
+            // Handle Blogs tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.support,
+          title: 'Support',
+          onTap: () {
+            // Handle Support tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.phone,
+          title: 'Call Us',
+          onTap: () {
+            // Handle Call Us tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.description,
+          title: 'Terms and Conditions',
+          onTap: () {
+            // Handle Terms and Conditions tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.ad_units,
+          title: 'Advertising',
+          onTap: () {
+            // Handle Advertising tap
+          },
+        ),
+        MenuListItem(
+          icon: Icons.logout,
+          title: 'Log Out',
+          onTap: () {
+            // Handle Log Out tap
+          },
+          iconColor: Colors.red, // Set the icon color to red
         ),
       ],
     );
