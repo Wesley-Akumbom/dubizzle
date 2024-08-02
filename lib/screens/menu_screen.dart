@@ -16,36 +16,28 @@ class MenuScreen extends StatelessWidget {
     final padding = shorterSide * 0.04;
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'Menu',
-          style: TextStyle(
-            fontSize: shorterSide * 0.06,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        centerTitle: true,
-      ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.all(padding),
-          child: Column(
-            children: [
-              UserProfileCard(
-                userName: 'John Doe', // Replace with actual user name
-                profileImagePath: 'assets/images/profile_placeholder.png',
-                onEditProfilePicture: () {
-                  // Handle edit profile picture
-                },
-                onGetVerified: () {
-                  // Handle get verified action
-                },
-              ),
-              SizedBox(height: padding),
-              _buildActionCards(context),
-              SizedBox(height: padding),
-              _buildMenuItems(context),
-            ],
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.all(padding),
+            child: Column(
+              children: [
+                UserProfileCard(
+                  userName: 'John Doe', // Replace with actual user name
+                  profileImagePath: 'assets/images/profile_placeholder.png',
+                  onEditProfilePicture: () {
+                    // Handle edit profile picture
+                  },
+                  onGetVerified: () {
+                    // Handle get verified action
+                  },
+                ),
+                SizedBox(height: padding),
+                _buildActionCards(context),
+                SizedBox(height: padding),
+                _buildMenuItems(context),
+              ],
+            ),
           ),
         ),
       ),

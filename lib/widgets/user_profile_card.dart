@@ -23,6 +23,7 @@ class UserProfileCard extends StatelessWidget {
     final editButtonSize = profileSize * 0.3;
 
     return Card(
+      color: Colors.white,
       elevation: 2,
       child: Padding(
         padding: EdgeInsets.all(shorterSide * 0.04),
@@ -75,18 +76,15 @@ class UserProfileCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: shorterSide * 0.02),
-                  ElevatedButton.icon(
+                  OutlinedButton.icon(
                     onPressed: onGetVerified,
-                    icon: Icon(Icons.verified, size: fontSize),
+                    icon: Icon(Icons.verified, size: fontSize, color: Colors.grey,),
                     label: Text(
                       'Get Verified',
-                      style: TextStyle(fontSize: fontSize * 0.8),
+                      style: TextStyle(fontSize: fontSize * 0.8, color: Colors.black),
                     ),
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30),
-                      ),
+                    style: OutlinedButton.styleFrom(
+                      side: BorderSide(color: Colors.grey[500]!)
                     ),
                   ),
                 ],

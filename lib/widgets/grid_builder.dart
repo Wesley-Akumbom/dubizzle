@@ -39,7 +39,7 @@ Widget buildGrid(String title, bool isDefault, BuildContext context) {
                   padding: EdgeInsets.symmetric(
                       horizontal: padding, vertical: padding / 2),
                   decoration: BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.blue[800],
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
@@ -65,10 +65,10 @@ Widget buildGrid(String title, bool isDefault, BuildContext context) {
                     size: iconSize, color: Colors.grey),
                 SizedBox(height: padding),
                 Text('You have no favorites saved on this list',
-                    style: TextStyle(fontSize: titleFontSize * 0.8)),
+                    style: TextStyle(fontSize: titleFontSize * 0.8, fontWeight: FontWeight.bold)),
                 Text(
                     'Use the favorite icon to save ads that you want to check later.',
-                    style: TextStyle(fontSize: titleFontSize * 0.6)),
+                    style: TextStyle(fontSize: titleFontSize * 0.6, fontWeight: FontWeight.w500, color: Colors.grey)),
               ],
             )
                 : Column(
@@ -78,20 +78,20 @@ Widget buildGrid(String title, bool isDefault, BuildContext context) {
                     size: iconSize, color: Colors.blue),
                 SizedBox(height: padding),
                 Text('Create your personalized list',
-                    style: TextStyle(fontSize: titleFontSize * 0.8)),
+                    style: TextStyle(fontSize: titleFontSize * 0.8, fontWeight: FontWeight.bold)),
                 Text('Organize your favorites',
-                    style: TextStyle(fontSize: titleFontSize * 0.6)),
+                    style: TextStyle(fontSize: titleFontSize * 0.6, fontWeight: FontWeight.w500, color: Colors.grey)),
                 SizedBox(height: padding),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () {
                     // Handle "Make A List" button press
                   },
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue,
+                  style: OutlinedButton.styleFrom(
+                    side: const BorderSide(color: Colors.blue),
                     textStyle:
                     TextStyle(fontSize: titleFontSize * 0.6),
                   ),
-                  child: const Text('Make A List'),
+                  child: const Text('Make A List', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.w600),),
                 ),
               ],
             ),

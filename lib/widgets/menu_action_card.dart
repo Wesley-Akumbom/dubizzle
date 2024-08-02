@@ -20,6 +20,7 @@ class MenuActionCard extends StatelessWidget {
     final iconSize = shorterSide * 0.08;
 
     return Card(
+      color: Colors.white,
       elevation: 2,
       child: InkWell(
         onTap: onTap,
