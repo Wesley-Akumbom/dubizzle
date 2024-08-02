@@ -72,7 +72,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisSpacing: padding / 4,
                   crossAxisSpacing: padding / 4,
                   children: const [
-                    CategoryCard('Property For Rent', Icons.home),
+                    CategoryCard('Property For Rent', Icons.home,),
                     CategoryCard('Property For Sale', Icons.sell),
                     CategoryCard('Off-Plan Properties', Icons.architecture),
                     CategoryCard('Rooms For Rent', Icons.hotel),
