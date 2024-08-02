@@ -5,6 +5,7 @@ import '../provider/navigation_provider.dart';
 import '../widgets/category_card.dart';
 import '../widgets/animated_search_bar.dart';
 import '../widgets/product_card.dart';
+import 'notifications_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,9 +44,25 @@ class _HomeScreenState extends State<HomeScreen> {
                     IconButton(
                       icon: const Icon(Icons.notifications),
                       onPressed: () {
-                        // Handle notification button press
-                      },
-                    ),
+                        Navigator.of(context).push(
+                          PageRouteBuilder(
+                            pageBuilder: (context, animation,
+                                secondaryAnimation) => const NotificationsScreen(),
+                            transitionsBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              const begin = Offset(1.0, 0.0);
+                              const end = Offset.zero;
+                              const curve = Curves.easeInOut;
+                              var tween = Tween(begin: begin, end: end).chain(
+                                  CurveTween(curve: curve));
+                              var offsetAnimation = animation.drive(tween);
+                              return SlideTransition(
+                                  position: offsetAnimation, child: child);
+                            },
+                          ),
+                        );
+                      }
+                    )
                   ],
                 ),
               ),
