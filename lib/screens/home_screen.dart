@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
+import '../widgets/ProductSection.dart';
 import '../widgets/category_card.dart';
 import '../widgets/animated_search_bar.dart';
 import '../widgets/product_card.dart';
@@ -46,23 +47,19 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         Navigator.of(context).push(
                           PageRouteBuilder(
-                            pageBuilder: (context, animation,
-                                secondaryAnimation) => const NotificationsScreen(),
-                            transitionsBuilder: (context, animation,
-                                secondaryAnimation, child) {
+                            pageBuilder: (context, animation, secondaryAnimation) => const NotificationsScreen(),
+                            transitionsBuilder: (context, animation, secondaryAnimation, child) {
                               const begin = Offset(1.0, 0.0);
                               const end = Offset.zero;
                               const curve = Curves.easeInOut;
-                              var tween = Tween(begin: begin, end: end).chain(
-                                  CurveTween(curve: curve));
+                              var tween = Tween(begin: begin, end: end).chain(CurveTween(curve: curve));
                               var offsetAnimation = animation.drive(tween);
-                              return SlideTransition(
-                                  position: offsetAnimation, child: child);
+                              return SlideTransition(position: offsetAnimation, child: child);
                             },
                           ),
                         );
-                      }
-                    )
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -151,165 +148,116 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              _buildProductSection('Popular in Residential for rent', [
-                const ProductCard(
-                  title: 'Apartment 1',
-                  description: 'Spacious 2BR apartment',
-                  imagePath: 'assets/images/apartment1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Villa 1',
-                  description: 'Luxury 4BR villa with pool',
-                  imagePath: 'assets/images/villa1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Studio 1',
-                  description: 'Cozy studio in downtown',
-                  imagePath: 'assets/images/studio1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Apartment 2',
-                  description: 'Modern 3BR apartment',
-                  imagePath: 'assets/images/apartment2.jpg',
-                ),
-                const ProductCard(
-                  title: 'Villa 2',
-                  description: '5BR villa with garden',
-                  imagePath: 'assets/images/villa2.jpg',
-                ),
-                const ProductCard(
-                  title: 'Studio 2',
-                  description: 'Stylish studio near metro',
-                  imagePath: 'assets/images/studio2.jpg',
-                ),
-              ]),
-              _buildProductSection('Popular in Cars', [
-                const ProductCard(
-                  title: 'Sedan 1',
-                  description: 'Reliable family car',
-                  imagePath: 'assets/images/sedan1.jpg',
-                ),
-                const ProductCard(
-                  title: 'SUV 1',
-                  description: 'Spacious 7-seater SUV',
-                  imagePath: 'assets/images/suv1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Sports Car 1',
-                  description: 'High-performance sports car',
-                  imagePath: 'assets/images/sportscar1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Sedan 2',
-                  description: 'Fuel-efficient compact car',
-                  imagePath: 'assets/images/sedan2.jpg',
-                ),
-                const ProductCard(
-                  title: 'SUV 2',
-                  description: 'Luxury 5-seater SUV',
-                  imagePath: 'assets/images/suv2.jpg',
-                ),
-                const ProductCard(
-                  title: 'Sports Car 2',
-                  description: 'Classic sports car',
-                  imagePath: 'assets/images/sportscar2.jpg',
-                ),
-              ]),
-              _buildProductSection('Popular in Computer & Networking', [
-                const ProductCard(
-                  title: 'Laptop 1',
-                  description: 'High-performance laptop',
-                  imagePath: 'assets/images/laptop1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Router 1',
-                  description: 'Fast Wi-Fi router',
-                  imagePath: 'assets/images/router1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Desktop 1',
-                  description: 'Powerful desktop PC',
-                  imagePath: 'assets/images/desktop1.jpg',
-                ),
-                const ProductCard(
-                  title: 'Laptop 2',
-                  description: 'Ultralight business laptop',
-                  imagePath: 'assets/images/laptop2.jpg',
-                ),
-                const ProductCard(
-                  title: 'Router 2',
-                  description: 'Mesh Wi-Fi system',
-                  imagePath: 'assets/images/router2.jpg',
-                ),
-                const ProductCard(
-                  title: 'Desktop 2',
-                  description: 'Gaming desktop PC',
-                  imagePath: 'assets/images/desktop2.jpg',
-                ),
-              ]),
+              const ProductSection(
+                title: 'Popular in Residential for rent',
+                products: [
+                  ProductCard(
+                    title: 'Apartment 1',
+                    description: 'Spacious 2BR apartment',
+                    imagePath: 'assets/images/apartment1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Villa 1',
+                    description: 'Luxury 4BR villa with pool',
+                    imagePath: 'assets/images/villa1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Studio 1',
+                    description: 'Cozy studio in downtown',
+                    imagePath: 'assets/images/studio1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Apartment 2',
+                    description: 'Modern 3BR apartment',
+                    imagePath: 'assets/images/apartment2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Villa 2',
+                    description: '5BR villa with garden',
+                    imagePath: 'assets/images/villa2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Studio 2',
+                    description: 'Stylish studio near metro',
+                    imagePath: 'assets/images/studio2.jpg',
+                  ),
+                ],
+              ),
+              const ProductSection(
+                title: 'Popular in Cars',
+                products: [
+                  ProductCard(
+                    title: 'Sedan 1',
+                    description: 'Reliable family car',
+                    imagePath: 'assets/images/sedan1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'SUV 1',
+                    description: 'Spacious 7-seater SUV',
+                    imagePath: 'assets/images/suv1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Sports Car 1',
+                    description: 'High-performance sports car',
+                    imagePath: 'assets/images/sportscar1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Sedan 2',
+                    description: 'Fuel-efficient compact car',
+                    imagePath: 'assets/images/sedan2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'SUV 2',
+                    description: 'Luxury 5-seater SUV',
+                    imagePath: 'assets/images/suv2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Sports Car 2',
+                    description: 'Classic sports car',
+                    imagePath: 'assets/images/sportscar2.jpg',
+                  ),
+                ],
+              ),
+              const ProductSection(
+                title: 'Popular in Computer and Networking',
+                products: [
+                  ProductCard(
+                    title: 'Laptop 1',
+                    description: 'High-performance laptop',
+                    imagePath: 'assets/images/laptop1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Router 1',
+                    description: 'Fast Wi-Fi router',
+                    imagePath: 'assets/images/router1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Desktop 1',
+                    description: 'Powerful desktop PC',
+                    imagePath: 'assets/images/desktop1.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Laptop 2',
+                    description: 'Ultralight business laptop',
+                    imagePath: 'assets/images/laptop2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Router 2',
+                    description: 'Mesh Wi-Fi system',
+                    imagePath: 'assets/images/router2.jpg',
+                  ),
+                  ProductCard(
+                    title: 'Desktop 2',
+                    description: 'Gaming desktop PC',
+                    imagePath: 'assets/images/desktop2.jpg',
+                  ),
+                ],
+              ),
             ],
           ),
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
-    );
-  }
-
-  Widget _buildProductSection(String title, List<Widget> products) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Text(
-            title,
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-        ),
-        SizedBox(
-          height: 150, // Adjust the height as needed
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: [
-              ...products,
-              _buildViewAllButton(),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildViewAllButton() {
-    return Container(
-      width: 112.5, // Same width as ProductCard
-      margin: const EdgeInsets.symmetric(horizontal: 6),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.black,
-            ),
-            child: IconButton(
-              icon: const Icon(Icons.arrow_forward, color: Colors.white),
-              onPressed: () {
-                // Handle view all products for this category
-              },
-            ),
-          ),
-          const SizedBox(height: 8),
-          const Text(
-            'View All',
-            style: TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.bold,
-              color: Colors.black,
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

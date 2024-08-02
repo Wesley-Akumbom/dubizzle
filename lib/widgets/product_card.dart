@@ -5,39 +5,56 @@ class ProductCard extends StatelessWidget {
   final String description;
   final String imagePath;
 
-  const ProductCard({super.key, required this.title, required this.description, required this.imagePath});
+  const ProductCard({
+    super.key,
+    required this.title,
+    required this.description,
+    required this.imagePath,
+  });
 
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+    final size = MediaQuery.of(context).size;
+
+    // Calculate responsive sizes
+    final cardWidth = size.width * 0.3;
+    final imageHeight = cardWidth * 0.75;
+    final titleFontSize = size.width * 0.03;
+    final descriptionFontSize = size.width * 0.025;
+
     return Container(
-      color: Colors.white,
-      width: 112.5, // Adjust the width as needed
-      margin: const EdgeInsets.symmetric(horizontal: 6),
+      width: cardWidth,
+      margin: EdgeInsets.symmetric(horizontal: size.width * 0.01),
       child: Card(
+        color: Colors.white,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               imagePath,
-              height: 75,
+              height: imageHeight,
               width: double.infinity,
               fit: BoxFit.cover,
             ),
             Padding(
-              padding: const EdgeInsets.all(6.0),
+              padding: EdgeInsets.all(size.width * 0.02),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: titleFontSize,
+                    ),
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
+                  SizedBox(height: size.height * 0.005),
                   Text(
                     description,
-                    style: const TextStyle(fontSize: 9),
+                    style: TextStyle(fontSize: descriptionFontSize),
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),

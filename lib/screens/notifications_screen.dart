@@ -5,9 +5,25 @@ class NotificationsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Get the screen size
+    final size = MediaQuery.of(context).size;
+
+    // Calculate responsive sizes
+    final imageWidth = size.width * 0.7;
+    final imageHeight = imageWidth * 0.8;
+    final titleFontSize = size.width * 0.05;
+    final subtitleFontSize = size.width * 0.035;
+    final buttonWidth = size.width * 0.5;
+    final buttonHeight = size.height * 0.06;
     return Scaffold(
       appBar: AppBar(
-        title: const Text('My Notifications', style: TextStyle(fontWeight: FontWeight.bold),),
+        title: Text(
+          'My Notifications',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: titleFontSize,
+          ),
+        ),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () => Navigator.of(context).pop(),
@@ -24,33 +40,48 @@ class NotificationsScreen extends StatelessWidget {
                 children: [
                   Image.asset(
                     'assets/images/no_notifications.jpg',
-                    width: 150,
-                    height: 150,
+                    width: imageWidth,
+                    height: imageHeight,
                   ),
-                  const SizedBox(height: 20),
-                  const Text(
+                  SizedBox(height: size.height * 0.02),
+                  Text(
                     'No notifications...yet!',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: titleFontSize,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                  const SizedBox(height: 10),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 40),
+                  SizedBox(height: size.height * 0.01),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: size.width * 0.1),
                     child: Text(
                       'View ad recommendations and news by dubizzle, etc...',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: subtitleFontSize,
+                        color: Colors.grey,
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 20),
-                  OutlinedButton(
-                    onPressed: () {
-                      // Handle explore now action
-                    },
-                    style: OutlinedButton.styleFrom(
-                      side: const BorderSide(color: Colors.red),
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  SizedBox(height: size.height * 0.02),
+                  SizedBox(
+                    width: buttonWidth,
+                    height: buttonHeight,
+                    child: OutlinedButton(
+                      onPressed: () {
+                        // Handle explore now action
+                      },
+                      style: OutlinedButton.styleFrom(
+                        side: const BorderSide(color: Colors.red),
+                      ),
+                      child: Text(
+                        'EXPLORE NOW',
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: subtitleFontSize,
+                        ),
+                      ),
                     ),
-                    child: const Text('EXPLORE NOW', style: TextStyle(color: Colors.red)),
                   ),
                 ],
               ),
