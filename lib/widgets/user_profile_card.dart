@@ -1,5 +1,8 @@
+// lib/widgets/user_profile_card.dart
+
 import 'package:flutter/material.dart';
 import 'edit_profile_photo_overlay.dart';
+import 'get_verified_overlay.dart';
 
 class UserProfileCard extends StatelessWidget {
   final String userName;
@@ -31,6 +34,32 @@ class UserProfileCard extends StatelessWidget {
             onChoosePhoto: () {
               // Implement choose photo functionality
               print('Choose from photo library');
+            },
+          ),
+        );
+      },
+    );
+  }
+
+  void _showGetVerifiedOverlay(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      backgroundColor: Colors.transparent,
+      builder: (BuildContext context) {
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: MediaQuery.of(context).viewInsets.bottom,
+          ),
+          child: GetVerifiedOverlay(
+            onLater: () {
+              Navigator.pop(context);
+              // Implement later functionality
+              print('Later');
+            },
+            onGetVerified: () {
+              Navigator.pop(context);
+              onGetVerified();
             },
           ),
         );
@@ -104,7 +133,7 @@ class UserProfileCard extends StatelessWidget {
                   ),
                   SizedBox(height: shorterSide * 0.02),
                   OutlinedButton.icon(
-                    onPressed: onGetVerified,
+                    onPressed: () => _showGetVerifiedOverlay(context),
                     icon: Icon(Icons.verified, size: fontSize, color: Colors.grey,),
                     label: Text(
                       'Get Verified',
