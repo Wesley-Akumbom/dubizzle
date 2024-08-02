@@ -13,7 +13,7 @@ class GetVerifiedOverlay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height * 0.75, // 3/4 of the screen height
+      height: MediaQuery.of(context).size.height * 0.69, // 3/4 of the screen height
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
@@ -71,7 +71,6 @@ class GetVerifiedOverlay extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.blue,
-                      decoration: TextDecoration.underline,
                     ),
                   ),
                 ),
@@ -89,16 +88,25 @@ class GetVerifiedOverlay extends StatelessWidget {
                   onPressed: onLater,
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Colors.grey),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8), // No radius
+                    ),
                   ),
-                  child: const Text('Later'),
+                  child: const Text('Later', style: TextStyle(color: Colors.black),),
                 ),
                 ElevatedButton.icon(
                   onPressed: onGetVerified,
-                  icon: const Icon(Icons.arrow_forward, color: Colors.red),
+                  icon: const Icon(Icons.arrow_forward, color: Colors.white),
                   label: const Text(
                     'Get Verified',
-                    style: TextStyle(color: Colors.red),
+                    style: TextStyle(color: Colors.white),
                   ),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Colors.blueAccent,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)
+                    )
+                  )
                 ),
               ],
             ),
