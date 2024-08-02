@@ -7,10 +7,10 @@ class EditProfilePhotoOverlay extends StatelessWidget {
   final VoidCallback onChoosePhoto;
 
   const EditProfilePhotoOverlay({
-    Key? key,
+    super.key,
     required this.onTakePhoto,
     required this.onChoosePhoto,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class EditProfilePhotoOverlay extends StatelessWidget {
       constraints: BoxConstraints(
         maxHeight: MediaQuery.of(context).size.height * 0.3, // Maximum 30% of screen height
       ),
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
@@ -32,7 +32,7 @@ class EditProfilePhotoOverlay extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Edit Profile Photo',
                     style: TextStyle(
                       fontSize: 18,
@@ -40,25 +40,25 @@ class EditProfilePhotoOverlay extends StatelessWidget {
                     ),
                   ),
                   IconButton(
-                    icon: Icon(Icons.close),
+                    icon: const Icon(Icons.close),
                     onPressed: () => Navigator.pop(context),
                   ),
                 ],
               ),
             ),
-            Divider(height: 1),
+            const Divider(height: 1),
             ListTile(
-              leading: Icon(Icons.camera_alt),
-              title: Text('Take a new photo'),
+              leading: const Icon(Icons.camera_alt),
+              title: const Text('Take a new photo'),
               onTap: () {
                 Navigator.pop(context);
                 onTakePhoto();
               },
             ),
-            Divider(height: 1),
+            const Divider(height: 1),
             ListTile(
-              leading: Icon(Icons.photo_library),
-              title: Text('Choose from your photo library'),
+              leading: const Icon(Icons.photo_library),
+              title: const Text('Choose from your photo library'),
               onTap: () {
                 Navigator.pop(context);
                 onChoosePhoto();

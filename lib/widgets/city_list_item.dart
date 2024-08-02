@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class CityListItem extends StatelessWidget {
   final String cityName;
+  final VoidCallback onTap;
 
-  const CityListItem(this.cityName, {super.key});
+  const CityListItem(this.cityName, {super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,9 +21,7 @@ class CityListItem extends StatelessWidget {
             fontSize: fontSize,
           ),
         ),
-        onTap: () {
-          // Handle city selection
-        },
+        onTap: onTap,
       ),
     );
   }

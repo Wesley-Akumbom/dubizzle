@@ -1,7 +1,10 @@
+// lib/screens/place_ad_screen.dart
+
 import 'package:flutter/material.dart';
 import '../transitions/custom_route_transitions.dart';
 import '../widgets/city_list_item.dart';
 import 'home_screen.dart';
+import 'listing_category_screen.dart'; // Import the ListingCategoryScreen
 
 class PlaceAdScreen extends StatelessWidget {
   const PlaceAdScreen({super.key});
@@ -46,23 +49,63 @@ class PlaceAdScreen extends StatelessWidget {
             SizedBox(height: padding),
             Expanded(
               child: ListView(
-                children: const [
-                  CityListItem('New York'),
-                  Divider(height: 2,),
-                  CityListItem('Los Angeles'),
-                  Divider(height: 2,),
-                  CityListItem('Chicago'),
-                  Divider(height: 2,),
-                  CityListItem('Houston'),
-                  Divider(height: 2,),
-                  CityListItem('Phoenix'),
-                  Divider(height: 2,),
-                  CityListItem('Philadelphia'),
-                  Divider(height: 2,),
-                  CityListItem('San Antonio'),
-                  Divider(height: 2,),
-                  CityListItem('San Diego'),
-                  Divider(height: 2,),
+                children: [
+                  CityListItem('New York', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('Los Angeles', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('Chicago', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('Houston', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('Phoenix', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('Philadelphia', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('San Antonio', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
+                  CityListItem('San Diego', onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => const ListingCategoryScreen()),
+                    );
+                  }),
+                  const Divider(height: 2),
                 ],
               ),
             ),
