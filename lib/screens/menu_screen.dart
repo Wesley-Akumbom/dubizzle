@@ -2,9 +2,9 @@
 
 import 'package:flutter/material.dart';
 import '../navigation/bottom_nav_bar.dart';
-import '../widgets/menu_action_card.dart';
-import '../widgets/user_profile_card.dart';
-import '../widgets/menu_list_item.dart';
+import '../widgets/cards/menu_action_card.dart';
+import '../widgets/cards/user_profile_card.dart';
+import '../widgets/list/menu_list_item.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});

@@ -1,8 +1,8 @@
 // lib/widgets/user_profile_card.dart
 
 import 'package:flutter/material.dart';
-import 'edit_profile_photo_overlay.dart';
-import 'get_verified_overlay.dart';
+import '../overlay/edit_profile_photo_overlay.dart';
+import '../overlay/get_verified_overlay.dart';
 
 class UserProfileCard extends StatelessWidget {
   final String userName;

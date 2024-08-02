@@ -3,9 +3,9 @@ import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
 import '../widgets/ProductSection.dart';
-import '../widgets/category_card.dart';
+import '../widgets/cards/category_card.dart';
 import '../widgets/animated_search_bar.dart';
-import '../widgets/product_card.dart';
+import '../widgets/cards/product_card.dart';
 import 'notifications_screen.dart';
 
 class HomeScreen extends StatefulWidget {

@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import '../transitions/custom_route_transitions.dart';
-import '../widgets/city_list_item.dart';
+import '../widgets/list/city_list_item.dart';
 import 'home_screen.dart';
 import 'listing_category_screen.dart'; // Import the ListingCategoryScreen
 

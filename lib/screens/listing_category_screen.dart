@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widgets/small_category_card.dart';
+import '../widgets/cards/small_category_card.dart';
 
 class ListingCategoryScreen extends StatelessWidget {
   const ListingCategoryScreen({super.key});
