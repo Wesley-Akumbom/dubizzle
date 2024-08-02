@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
 import '../widgets/category_card.dart';
-import '../widgets/featured_listing.dart';
-import '../widgets/animated_search_bar.dart'; // Add this import
+import '../widgets/animated_search_bar.dart';
+import '../widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -33,9 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: Row(
                   children: [
                     Expanded(
-                      child: AnimatedSearchBar( // Replace TextField with AnimatedSearchBar
+                      child: AnimatedSearchBar(
                         onSearch: (query) {
-                          // Handle search here
                           print('Searching for: $query');
                         },
                       ),
@@ -51,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.fromLTRB(10,1,10,1),
+                padding: const EdgeInsets.fromLTRB(10, 1, 10, 1),
                 child: GridView.count(
                   crossAxisCount: 3,
                   shrinkWrap: true,
@@ -135,20 +134,165 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
               ),
-              ListView(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  FeaturedListing('Featured Item 1'),
-                  FeaturedListing('Featured Item 2'),
-                  FeaturedListing('Featured Item 3'),
-                ],
-              ),
+              _buildProductSection('Popular in Residential for rent', [
+                const ProductCard(
+                  title: 'Apartment 1',
+                  description: 'Spacious 2BR apartment',
+                  imagePath: 'assets/images/apartment1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Villa 1',
+                  description: 'Luxury 4BR villa with pool',
+                  imagePath: 'assets/images/villa1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Studio 1',
+                  description: 'Cozy studio in downtown',
+                  imagePath: 'assets/images/studio1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Apartment 2',
+                  description: 'Modern 3BR apartment',
+                  imagePath: 'assets/images/apartment2.jpg',
+                ),
+                const ProductCard(
+                  title: 'Villa 2',
+                  description: '5BR villa with garden',
+                  imagePath: 'assets/images/villa2.jpg',
+                ),
+                const ProductCard(
+                  title: 'Studio 2',
+                  description: 'Stylish studio near metro',
+                  imagePath: 'assets/images/studio2.jpg',
+                ),
+              ]),
+              _buildProductSection('Popular in Cars', [
+                const ProductCard(
+                  title: 'Sedan 1',
+                  description: 'Reliable family car',
+                  imagePath: 'assets/images/sedan1.jpg',
+                ),
+                const ProductCard(
+                  title: 'SUV 1',
+                  description: 'Spacious 7-seater SUV',
+                  imagePath: 'assets/images/suv1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Sports Car 1',
+                  description: 'High-performance sports car',
+                  imagePath: 'assets/images/sportscar1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Sedan 2',
+                  description: 'Fuel-efficient compact car',
+                  imagePath: 'assets/images/sedan2.jpg',
+                ),
+                const ProductCard(
+                  title: 'SUV 2',
+                  description: 'Luxury 5-seater SUV',
+                  imagePath: 'assets/images/suv2.jpg',
+                ),
+                const ProductCard(
+                  title: 'Sports Car 2',
+                  description: 'Classic sports car',
+                  imagePath: 'assets/images/sportscar2.jpg',
+                ),
+              ]),
+              _buildProductSection('Popular in Computer & Networking', [
+                const ProductCard(
+                  title: 'Laptop 1',
+                  description: 'High-performance laptop',
+                  imagePath: 'assets/images/laptop1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Router 1',
+                  description: 'Fast Wi-Fi router',
+                  imagePath: 'assets/images/router1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Desktop 1',
+                  description: 'Powerful desktop PC',
+                  imagePath: 'assets/images/desktop1.jpg',
+                ),
+                const ProductCard(
+                  title: 'Laptop 2',
+                  description: 'Ultralight business laptop',
+                  imagePath: 'assets/images/laptop2.jpg',
+                ),
+                const ProductCard(
+                  title: 'Router 2',
+                  description: 'Mesh Wi-Fi system',
+                  imagePath: 'assets/images/router2.jpg',
+                ),
+                const ProductCard(
+                  title: 'Desktop 2',
+                  description: 'Gaming desktop PC',
+                  imagePath: 'assets/images/desktop2.jpg',
+                ),
+              ]),
             ],
           ),
         ),
       ),
       bottomNavigationBar: const BottomNavBar(),
+    );
+  }
+
+  Widget _buildProductSection(String title, List<Widget> products) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Text(
+            title,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+        ),
+        SizedBox(
+          height: 150, // Adjust the height as needed
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            children: [
+              ...products,
+              _buildViewAllButton(),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildViewAllButton() {
+    return Container(
+      width: 112.5, // Same width as ProductCard
+      margin: const EdgeInsets.symmetric(horizontal: 6),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.black,
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_forward, color: Colors.white),
+              onPressed: () {
+                // Handle view all products for this category
+              },
+            ),
+          ),
+          const SizedBox(height: 8),
+          const Text(
+            'View All',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.bold,
+              color: Colors.black,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
