@@ -1,7 +1,5 @@
-// lib/screens/place_ad_screen.dart
-
 import 'package:flutter/material.dart';
-import '../transitions/custom_route_transitions.dart';
+import '../routes/slide_down_route.dart';
 import '../widgets/list/city_list_item.dart';
 import 'home_screen.dart';
 import 'listing_category_screen.dart'; // Import the ListingCategoryScreen

@@ -3,8 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/navigation_provider.dart';
 import '../routes/routes.dart';
+import '../routes/slide_left_route.dart';
+import '../routes/slide_up_route.dart';
 import '../screens/place_ad_screen.dart';
-import '../transitions/custom_route_transitions.dart';
 
 class BottomNavBar extends StatelessWidget {
   const BottomNavBar({super.key});
