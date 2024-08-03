@@ -2,7 +2,7 @@
 
 ## Overview
 
-In an attempt to build a replica of the Dubizzle application, this Flutter application so far has various functionalities implemented such as user profiles, favorite lists, and notifications. It includes a well-structured navigation system and custom animations for a seamless user experience.
+In an attempt to build a replica of the Dubizzle application, this Flutter application so far has various functionalities implemented such as user profiles, favorite lists, and notifications. It includes a well-structured navigation system and custom animations for a seamless user experience. It is static for now, so no stateful widgets yet.
 
 ## Features
 
