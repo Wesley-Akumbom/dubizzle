@@ -2,7 +2,7 @@ import 'package:dubizzle/screens/menu_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../provider/navigation_provider.dart';
-import '../routes.dart';
+import '../routes/routes.dart';
 import '../screens/place_ad_screen.dart';
 import '../transitions/custom_route_transitions.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
-import '../widgets/ProductSection.dart';
+import '../widgets/producs/ProductSection.dart';
 import '../widgets/cards/category_card.dart';
 import '../widgets/search_bar/animated_search_bar.dart';
 import '../widgets/cards/product_card.dart';

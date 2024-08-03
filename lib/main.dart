@@ -1,7 +1,7 @@
 import 'package:dubizzle/provider/navigation_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'routes.dart';
+import 'routes/routes.dart';
 
 void main(){
   runApp(DubizzleApp());

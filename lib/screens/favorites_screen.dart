@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../provider/navigation_provider.dart';
-import '../widgets/favorites_grid.dart';
+import '../widgets/grid/favorites_grid.dart';
 import '../widgets/overlay/create_list_overlay.dart';
 
 class FavoritesScreen extends StatefulWidget {
