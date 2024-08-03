@@ -82,8 +82,8 @@ assets/
 ### Installation
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-repo/flutter-app.git
-   cd flutter-app
+   git clone https://github.com/wesley-akumbom/dubizzle.git
+   cd dubizzle
 2. **Install dependencies**:
    ```bash
    flutter pub get
@@ -110,11 +110,3 @@ Contributions are welcome! Please fork the repository and create a pull request 
 
 ## License
 This project is licensed under the MIT License. See the LICENSE file for details
-
-
-### Notes:
-- Replace `https://github.com/your-repo/flutter-app.git` with the actual URL of your GitHub repository.
-- You can add any additional sections or features as needed.
-- Make sure to format the README file correctly in your text editor to maintain the Markdown structure.
-
-This README provides a clear and professional overview of your project on GitHub. If you have any further adjustments or questions, feel free to ask!
