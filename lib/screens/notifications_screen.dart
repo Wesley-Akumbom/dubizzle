@@ -39,7 +39,7 @@ class NotificationsScreen extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Image.asset(
-                    'assets/images/no_notifications.jpg',
+                    'assets/images/notif/no_notifications.jpg',
                     width: imageWidth,
                     height: imageHeight,
                   ),

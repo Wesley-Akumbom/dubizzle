@@ -30,7 +30,7 @@ class ChatsScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Image.asset(
-                'assets/images/empty_chat.jpg',
+                'assets/images/chat/empty_chat.jpg',
                 width: imageSize,
                 height: imageSize,
               ),

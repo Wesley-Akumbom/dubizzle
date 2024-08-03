@@ -1,5 +1,3 @@
-// lib/screens/favorites_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../navigation/bottom_nav_bar.dart';

@@ -47,7 +47,7 @@ class GetVerifiedOverlay extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Image.asset(
-                  'assets/images/verification.png', // Make sure to add this image to your assets
+                  'assets/images/menu/verification.png', // Make sure to add this image to your assets
                   width: MediaQuery.of(context).size.width * 0.6,
                   height: MediaQuery.of(context).size.height * 0.3,
                   fit: BoxFit.cover,
