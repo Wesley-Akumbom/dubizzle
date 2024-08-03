@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget buildGrid(String title, bool isDefault, BuildContext context) {
+Widget buildFavoritesGrid(String title, bool isDefault, BuildContext context, VoidCallback onMakeList) {
   final shorterSide = MediaQuery.of(context).size.shortestSide;
   final titleFontSize = shorterSide * 0.0375; // Reduced from 0.05 to 0.0375
   final iconSize = shorterSide * 0.075; // Reduced from 0.1 to 0.075
@@ -83,9 +83,7 @@ Widget buildGrid(String title, bool isDefault, BuildContext context) {
                     style: TextStyle(fontSize: titleFontSize * 0.6, fontWeight: FontWeight.w500, color: Colors.grey)),
                 SizedBox(height: padding),
                 OutlinedButton(
-                  onPressed: () {
-                    // Handle "Make A List" button press
-                  },
+                  onPressed: onMakeList,
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Colors.blue),
                     textStyle:
