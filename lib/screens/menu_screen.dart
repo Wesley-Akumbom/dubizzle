@@ -1,5 +1,4 @@
-// lib/screens/menu_screen.dart
-
+import 'package:dubizzle/widgets/overlay/logout_confirmation_overlay.dart';
 import 'package:flutter/material.dart';
 import '../navigation/bottom_nav_bar.dart';
 import '../widgets/cards/menu_action_card.dart';
@@ -8,6 +7,26 @@ import '../widgets/list/menu_list_item.dart';
 
 class MenuScreen extends StatelessWidget {
   const MenuScreen({super.key});
+
+  void _showLogoutConfirmation(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return LogoutConfirmationOverlay(
+          onCancel: () {
+            Navigator.of(context).pop(); // Close the dialog
+          },
+          onConfirm: () {
+            // Perform logout action
+            print('Logging out...');
+            Navigator.of(context).pop(); // Close the dialog
+            // Navigate to login screen or perform other logout actions
+          },
+        );
+      },
+    );
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +43,7 @@ class MenuScreen extends StatelessWidget {
               children: [
                 UserProfileCard(
                   userName: 'John Doe', // Replace with actual user name
-                  profileImagePath: 'assets/images/profile_placeholder.png',
+                  profileImagePath: 'assets/images/menu/profile_placeholder.png',
                   onEditProfilePicture: () {
                     // Handle edit profile picture
                   },
@@ -165,7 +184,7 @@ class MenuScreen extends StatelessWidget {
           icon: Icons.logout,
           title: 'Log Out',
           onTap: () {
-            // Handle Log Out tap
+            _showLogoutConfirmation(context);
           },
           iconColor: Colors.red, // Set the icon color to red
           showTrailing: false, // Set this to false to hide the trailing arrow
