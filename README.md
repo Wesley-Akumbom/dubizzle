@@ -8,7 +8,7 @@ In an attempt to build a replica of the Dubizzle application, this Flutter appli
 
 ### User Profile
 - **User Profile Card**: Displays user information such as name and profile picture.
-- **Edit Profile Picture**: Users can update their profile picture.
+- **Edit Profile Picture**: Users can initiate  editing their profile.
 - **Get Verified**: Users can initiate the verification process.
 
 ### Favorites
