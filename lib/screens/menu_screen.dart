@@ -42,8 +42,8 @@ class MenuScreen extends StatelessWidget {
             child: Column(
               children: [
                 UserProfileCard(
-                  userName: 'John Doe', // Replace with actual user name
-                  profileImagePath: 'assets/images/menu/profile_placeholder.png',
+                  userName: 'Akumbom Wesley', // Replace with actual user name
+                  profileImagePath: 'assets/images/menu/profile_placeholder.jpg',
                   onEditProfilePicture: () {
                     // Handle edit profile picture
                   },

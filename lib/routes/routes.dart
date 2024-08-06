@@ -1,3 +1,4 @@
+import 'package:dubizzle/screens/auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:dubizzle/screens/chats_screen.dart';
 import 'package:dubizzle/screens/favorites_screen.dart';
@@ -6,7 +7,8 @@ import 'package:dubizzle/screens/menu_screen.dart';
 import 'package:dubizzle/screens/place_ad_screen.dart';
 
 class AppRoutes{
-  static const String home = '/';
+  static const String auth = '/auth';
+  static const String home = '/home';
   static const String favorites = '/favorites';
   static const String placeAd = '/placeAd';
   static const String chats = '/chats';
@@ -16,6 +18,8 @@ class AppRoutes{
 class AppRouter {
   static Route <dynamic> generateRoute(RouteSettings settings){
     switch (settings.name) {
+      case AppRoutes.auth:
+        return MaterialPageRoute(builder: (_) => AuthScreen());
       case AppRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomeScreen());
       case AppRoutes.favorites:
