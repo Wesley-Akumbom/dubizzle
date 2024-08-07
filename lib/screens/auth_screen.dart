@@ -1,138 +1,97 @@
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'package:flutter_form_builder/flutter_form_builder.dart';
+import '../auth/auth_form.dart';
+import '../auth/auth_view_model.dart';
 import 'home_screen.dart';
 
-class AuthScreen extends StatefulWidget {
-  @override
-  _AuthScreenState createState() => _AuthScreenState();
-}
+class AuthScreen extends StatelessWidget {
+  final _formKey = GlobalKey<FormBuilderState>();
 
-class _AuthScreenState extends State<AuthScreen> {
-  final _auth = FirebaseAuth.instance;
-  bool _isLogin = true;
-  String _email = '';
-  String _password = '';
-  String _confirmPassword = '';
-  final _formKey = GlobalKey<FormState>();
+  AuthScreen({Key? key}) : super(key: key);
 
-  void _trySubmit() async {
-    final isValid = _formKey.currentState!.validate();
-    FocusScope.of(context).unfocus();
+  void _showErrorToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: Colors.red,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+  }
 
+  void _trySubmit(BuildContext context, AuthViewModel viewModel) async {
+    final isValid = _formKey.currentState?.saveAndValidate() ?? false;
     if (isValid) {
-      _formKey.currentState!.save();
+      final formData = _formKey.currentState!.value;
+      final email = formData['email'] as String?;
+      final password = formData['password'] as String?;
+      final confirmPassword = formData['confirm_password'] as String?;
+
+      if (email == null || password == null) {
+        _showErrorToast('Email and password are required.');
+        return;
+      }
+
       try {
-        if (_isLogin) {
-          await _auth.signInWithEmailAndPassword(
-            email: _email,
-            password: _password,
-          );
-        } else {
-          if (_password != _confirmPassword) {
-            ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(content: Text('Passwords do not match!')),
-            );
-            return;
-          }
-          await _auth.createUserWithEmailAndPassword(
-            email: _email,
-            password: _password,
-          );
-        }
-        // Navigate to home screen after successful authentication
+        await viewModel.submitAuth(email, password, confirmPassword);
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => HomeScreen()),
         );
       } catch (error) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(error.toString())),
-        );
+        if (error is FirebaseAuthException) {
+          _showErrorToast(viewModel.getErrorMessage(error.code));
+        } else {
+          _showErrorToast('An error occurred. Please try again.');
+        }
       }
+    } else {
+      _showErrorToast('Please correct the errors in the form.');
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          _isLogin ? 'Sign In' : 'Sign Up',
-          style: const TextStyle(
-              fontWeight: FontWeight.bold
-          ),
-        ),
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.redAccent,
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              TextFormField(
-                key: ValueKey('email'),
-                validator: (value) {
-                  if (value!.isEmpty || !value.contains('@')) {
-                    return 'Please enter a valid email address.';
-                  }
-                  return null;
-                },
-                keyboardType: TextInputType.emailAddress,
-                decoration: InputDecoration(labelText: 'Email address'),
-                onSaved: (value) {
-                  _email = value!;
-                },
+    return ChangeNotifierProvider(
+      create: (_) => AuthViewModel(),
+      child: Consumer<AuthViewModel>(
+        builder: (context, viewModel, _) {
+          return Scaffold(
+            appBar: AppBar(
+              title: Text(
+                viewModel.isLogin ? 'Sign In' : 'Sign Up',
+                style: const TextStyle(fontWeight: FontWeight.bold),
               ),
-              TextFormField(
-                key: ValueKey('password'),
-                validator: (value) {
-                  if (value!.isEmpty || value.length < 6) {
-                    return 'Password must be at least 6 characters long.';
-                  }
-                  return null;
-                },
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                onSaved: (value) {
-                  _password = value!;
-                },
+              automaticallyImplyLeading: !viewModel.isLogin,
+              backgroundColor: Colors.redAccent,
+              centerTitle: true,
+            ),
+            body: viewModel.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  AuthForm(
+                    isLogin: viewModel.isLogin,
+                    formKey: _formKey,
+                    onSubmit: () => _trySubmit(context, viewModel),
+                  ),
+                  TextButton(
+                    onPressed: viewModel.toggleAuthMode,
+                    child: Text(viewModel.isLogin
+                        ? 'Create a new account'
+                        : 'I already have an account'),
+                  ),
+                ],
               ),
-              if (!_isLogin)
-                TextFormField(
-                  key: ValueKey('confirm_password'),
-                  validator: (value) {
-                    if (value!.isEmpty || value.length < 6) {
-                      return 'Password must be at least 6 characters long.';
-                    }
-                    return null;
-                  },
-                  decoration: InputDecoration(labelText: 'Confirm Password'),
-                  obscureText: true,
-                  onSaved: (value) {
-                    _confirmPassword = value!;
-                  },
-                ),
-              SizedBox(height: 12),
-              ElevatedButton(
-                onPressed: _trySubmit,
-                child: Text(_isLogin ? 'Login' : 'Sign Up'),
-              ),
-              TextButton(
-                onPressed: () {
-                  setState(() {
-                    _isLogin = !_isLogin;
-                  });
-                },
-                child: Text(_isLogin
-                    ? 'Create a new account'
-                    : 'I already have an account'),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       ),
     );
   }
