@@ -1,6 +1,7 @@
 import 'package:dubizzle/widgets/overlay/logout_confirmation_overlay.dart';
 import 'package:flutter/material.dart';
 import '../navigation/bottom_nav_bar.dart';
+import '../routes/routes.dart';
 import '../widgets/cards/menu_action_card.dart';
 import '../widgets/cards/user_profile_card.dart';
 import '../widgets/list/menu_list_item.dart';
@@ -19,7 +20,7 @@ class MenuScreen extends StatelessWidget {
           onConfirm: () {
             // Perform logout action
             print('Logging out...');
-            Navigator.of(context).pop(); // Close the dialog
+            Navigator.pushReplacementNamed(context, AppRoutes.auth);
             // Navigate to login screen or perform other logout actions
           },
         );
