@@ -31,7 +31,7 @@ class AppRouter {
       case AppRoutes.menu:
         return MaterialPageRoute(builder: (_) => const MenuScreen());
       default:
-        return MaterialPageRoute(builder: (_) => const HomeScreen());
+        return MaterialPageRoute(builder: (_) => AuthScreen());
 
     }
   }

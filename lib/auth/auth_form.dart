@@ -44,8 +44,14 @@ class AuthForm extends StatelessWidget {
             ),
           const SizedBox(height: 12),
           ElevatedButton(
+            style: ButtonStyle(),
             onPressed: onSubmit,
-            child: Text(isLogin ? 'Login' : 'Sign Up'),
+            child: Text(
+                isLogin ? 'Login' : 'Sign Up',
+                style: const TextStyle(
+                  color: Colors.black
+                ),
+            ),
           ),
         ],
       ),

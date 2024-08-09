@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'routes/routes.dart';
-import 'screens/auth_screen.dart'; // Make sure to create this file
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +18,7 @@ class DubizzleApp extends StatelessWidget {
     return ChangeNotifierProvider(
       create: (context) => NavigationProvider(),
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Dubizzle',
         theme: ThemeData(
           primarySwatch: Colors.blue,
